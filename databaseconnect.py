@@ -148,6 +148,9 @@ def get_chat_response():
 
 @logger_config.logger
 def get_question_response(subject, root, verb):
+    print("subject:", subject)
+    print("root:", root)
+    print("verb:", verb)
     db = connection_to_database()
     cur = db.cursor(prepared=True)
     if str(subject) == "[]":
