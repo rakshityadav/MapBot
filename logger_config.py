@@ -2,7 +2,7 @@ from functools import wraps
 import logging
 
 FORMAT = "%(asctime)s - %(name)-s - %(levelname)-s - %(message)s"
-LEVEL = logging.DEBUG
+LEVEL = logging.ERROR
 logging.basicConfig(format=FORMAT, level=LEVEL)
 log = logging.getLogger(__name__)
 
