@@ -188,19 +188,13 @@ def get_question_response(subject, root, verb):
             checkVerb = res[0]
             # checkVerb is a string while verb is a list. checkVerb ['verb']
             if checkVerb == "[]":
-                cur.execute(
-                    "SELECT sentence FROM statement_table WHERE subject= %s",
-                    (str(subject[0]),),
-                )
+                cur.execute("SELECT sentence FROM statement_table WHERE subject= %s",(str(subject[0]),)
                 res = cur.fetchone()
                 B = res[0]
                 return B, chatbot.LearnResponse.MESSAGE.name
             else:
                 if checkVerb[2:-2] == verb[0]:
-                    cur.execute(
-                        "SELECT sentence FROM statement_table WHERE subject= %s",
-                        (str(subject[0]),),
-                    )
+                    cur.execute("SELECT sentence FROM statement_table WHERE subject= %s",(str(subject[0]),)
                     res = cur.fetchone()
                     B = res[0]
                     return B, chatbot.LearnResponse.MESSAGE.name
