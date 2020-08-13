@@ -182,19 +182,19 @@ def get_question_response(subject, root, verb):
 #                 break
 #         if found == 1:
             cur.execute(
-                "SELECT verb FROM statement_table WHERE subject like '%"+str(subject[0]+"%' LIMIT 1",)
+                "SELECT verb FROM statement_table WHERE subject like '%"+str(subject[0])+"%' LIMIT 1"
             )
             res = cur.fetchone()
             checkVerb = res[0]
             # checkVerb is a string while verb is a list. checkVerb ['verb']
             if checkVerb == "[]":
-                cur.execute("SELECT sentence FROM statement_table WHERE subject= %s LIMIT 1",(str(subject[0]),),)
+                cur.execute("SELECT sentence FROM statement_table WHERE subject like '%"+str(subject[0])+"%' LIMIT 1")
                 res = cur.fetchone()
                 B = res[0]
                 return B, chatbot.LearnResponse.MESSAGE.name
             else:
                 if checkVerb[2:-2] == verb[0]:
-                    cur.execute("SELECT sentence FROM statement_table WHERE subject= %s LIMIT 1",(str(subject[0]),),)
+                    cur.execute("SELECT sentence FROM statement_table WHERE subject like '%"+str(subject[0])+"%' LIMIT 1")
                     res = cur.fetchone()
                     B = res[0]
                     return B, chatbot.LearnResponse.MESSAGE.name
