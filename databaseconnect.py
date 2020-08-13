@@ -171,18 +171,18 @@ def get_question_response(subject, root, verb):
             B = "Sorry I don't know the response to this. Please train me."
             return B, chatbot.LearnResponse.TRAIN_ME.name
     else:
-        cur.execute("SELECT subject FROM statement_table")
-        res = cur.fetchall()
-        found = 0
-        for r in res:
-            print(r[-1]);
-            print(str(subject[0]))
-            if r[-1] == str(subject[0]):
-                found = 1
-                break
-        if found == 1:
+#         cur.execute("SELECT subject FROM statement_table")
+#         res = cur.fetchall()
+#         found = 0
+#         for r in res:
+#             print(r[-1]);
+#             print(str(subject[0]))
+#             if r[-1] == str(subject[0]):
+#                 found = 1
+#                 break
+#         if found == 1:
             cur.execute(
-                "SELECT verb FROM statement_table WHERE subject= %s", (str(subject[0]),)
+                "SELECT verb FROM statement_table WHERE subject like %"+str(subject[0]+"%",,)
             )
             res = cur.fetchone()
             checkVerb = res[0]
@@ -207,9 +207,9 @@ def get_question_response(subject, root, verb):
                 else:
                     B = "Sorry I don't know the response to this. Please train me."
                     return B, chatbot.LearnResponse.TRAIN_ME.name
-        else:
-            B = "Sorry I don't know the response to this. Please train me."
-            return B, chatbot.LearnResponse.TRAIN_ME.name
+#         else:
+#             B = "Sorry I don't know the response to this. Please train me."
+#             return B, chatbot.LearnResponse.TRAIN_ME.name
 
 
 # May be redundant. Can be handled by add_to_database("O", subject, root, verb, H)
