@@ -181,15 +181,15 @@ def get_question_response(subject, root, verb):
 #                 found = 1
 #                 break
 #         if found == 1:
-            print("1:",str(subject[0]))
-            print("2:",str(verb[0]))
+            print("1:subject[0]:",str(subject[0]))
+            print("2:verb[0]:",str(verb[0]))
             cur.execute(
                 "SELECT verb FROM statement_table WHERE subject like '%"+str(subject[0])+"%' LIMIT 1"
             )
             res = cur.fetchone()
             checkVerb = res[0]
-            print("3:",str(checkVerb))
-            print("4:",str(checkVerb[2:-2]))
+            print("3:checkVerb:",str(checkVerb))
+            print("4:checkVerb[2:-2]:",str(checkVerb[2:-2]))
             # checkVerb is a string while verb is a list. checkVerb ['verb']
             if checkVerb == "[]":
                 cur.execute("SELECT sentence FROM statement_table WHERE subject like '%"+str(subject[0])+"%' LIMIT 1")
