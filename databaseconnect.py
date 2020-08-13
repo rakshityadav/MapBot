@@ -181,6 +181,7 @@ def get_question_response(subject, root, verb):
 #                 found = 1
 #                 break
 #         if found == 1:
+            print(str(subject[0]))
             cur.execute(
                 "SELECT verb FROM statement_table WHERE subject like '%"+str(subject[0])+"%' LIMIT 1"
             )
