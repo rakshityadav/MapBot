@@ -155,6 +155,8 @@ def get_question_response(subject, root, verb):
         res = cur.fetchall()
         found = 0
         for r in res:
+            print(r[-1]);
+            print(str(verb))
             if r[-1] == str(verb):
                 found = 1
                 break
@@ -173,6 +175,8 @@ def get_question_response(subject, root, verb):
         res = cur.fetchall()
         found = 0
         for r in res:
+            print(r[-1]);
+            print(str(subject[0]))
             if r[-1] == str(subject[0]):
                 found = 1
                 break
